@@ -43,18 +43,29 @@ public class EmployeeApplication {
 		System.out.println("deleteByFirstName: ");
 		employeeRepository.deleteByFirstName("Niles");
 		System.out.println("----------Employee end -------");
-		System.out.println("-----------------------------");
 	}
 
+	@PostConstruct
 	public void testDepartments() {
 		System.out.println("----------Department start -------");
+		System.out.println("findByDepartment: "+ departmentRepository.findByDepartment("Furniture"));
+		System.out.println("findByDivisionIs: "+ departmentRepository.findByDivisionIs("Kids"));
+		System.out.println("findByDivisionEquals: "+ departmentRepository.findByDivisionEquals("Hardware"));
+		System.out.println("findByDepartmentEndingWith: "+ departmentRepository.findByDepartmentEndingWith("vies"));
+		System.out.println("findDistinctTop3ByDivisionContains: "+ departmentRepository.findDistinctTop3ByDivisionContains("Hea"));
+		System.out.println("findByOrderByDepartment: "+ departmentRepository.findByOrderByDepartment());
 		System.out.println("----------Department end -------");
-		System.out.println("-----------------------------");
 
 	}
 
+	@PostConstruct
 	public void testRegions() {
 		System.out.println("----------Regions start -------");
+		System.out.println("findDistinctByCountry: " + regionRepository.findDistinctByCountry("Asia"));
+		System.out.println("findByCountryOrRegion: " + regionRepository.findByCountryOrRegion("Asia", "Southwest"));
+		System.out.println("findByCountryContaining: " + regionRepository.findByCountryContaining("United"));
+		System.out.println("findByCountryContainingOrderByCountry: " + regionRepository.findByCountryContainingOrderByCountry("United"));
+		System.out.println("findTop3ByCountry: " + regionRepository.findTop3ByCountry("Canada"));
 		System.out.println("----------Regions end -------");
 	}
 
