@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 @Setter
 @NoArgsConstructor
 @ToString
+@NamedQuery(name = "Region.findAllRegions", query = "SELECT r FROM Region r")
 public class Region extends BaseEntity<Integer> {
 
     private String region;

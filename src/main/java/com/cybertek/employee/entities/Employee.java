@@ -1,10 +1,7 @@
 package com.cybertek.employee.entities;
 
 import com.cybertek.employee.enums.Gender;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,6 +12,9 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @ToString
+@NamedQueries({@NamedQuery(name = "Employee.findAllNamedQuery", query = "SELECT e FROM Employee e"),
+               @NamedQuery(name = "Employee.findAllWithEmails", query = "SELECT e FROM Employee e WHERE e.email IS NOT NULL"),
+               @NamedQuery(name = "Employee.findWithSalaryGreaterThan", query = "SELECT e from Employee e where e.salary > :salary")})
 public class Employee extends BaseEntity<Integer>{
 
     @Column(name = "first_name")
@@ -41,4 +41,7 @@ public class Employee extends BaseEntity<Integer>{
     @JoinColumn(name = "region_id")
     private Region region;
 
+    public Employee(String email) {
+        this.email = email;
+    }
 }
